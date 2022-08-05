@@ -7,7 +7,8 @@
         {
             "name": "realestate",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": ["--no-sound-null-safety"]
         },
         {
             "name": "realestate (profile mode)",

@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.realestate">
+    package="com.tanagy.realestate">
    <application
         android:label="realestate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+                android:name="com.naver.maps.map.CLIENT_ID"
+                android:value="6l6xqq5mms" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
