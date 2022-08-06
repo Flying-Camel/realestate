@@ -2,75 +2,45 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
+import 'package:realestate/controller/bottom_nav.dart';
 import 'package:realestate/routes/map.dart';
 
 // routes
 import 'apartment_list.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    ApartmentList(),
-    MapView(),
-    Text(
-      '분석창 (todo)',
-      style: optionStyle,
-    ),
-    Text(
-      '공유 (todo)',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class Home extends GetView<BottomNavController> {
+  const Home({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('내집 찾아줘'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '집 리스트',
+    return WillPopScope(
+      onWillPop: controller.willPopAction,
+      child: Obx(
+        () => Scaffold(
+          appBar: AppBar(),
+          body: IndexedStack(
+            index: controller.pageIndex.value,
+            children: [
+              Container(child: Text('home')),
+              Container(child: Text('map')),
+              Container(child: Text('list')),
+              Container(child: Text('my')),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: '지도',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_chart_outlined),
-            label: '호가',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.share),
-            label: '공유',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+          bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              currentIndex: controller.pageIndex.value,
+              onTap: controller.changeBottomNav,
+              elevation: 0,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+                BottomNavigationBarItem(icon: Icon(Icons.map), label: 'map'),
+                BottomNavigationBarItem(icon: Icon(Icons.share), label: 'list'),
+                BottomNavigationBarItem(icon: Icon(Icons.manage_accounts), label: 'my'),
+              ]),
+        ),
       ),
     );
   }
