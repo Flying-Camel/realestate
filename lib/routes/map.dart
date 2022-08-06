@@ -6,6 +6,8 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const NaverMap(locationButtonEnable: true);
+    return const NaverMap(
+      locationButtonEnable: true,
+      initLocationTrackingMode: LocationTrackingMode.Follow,);
   }
 }

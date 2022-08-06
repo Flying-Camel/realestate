@@ -24,7 +24,7 @@ class Home extends GetView<BottomNavController> {
             index: controller.pageIndex.value,
             children: [
               Container(child: Text('home')),
-              Container(child: Text('map')),
+              MapPage(),
               Container(child: Text('list')),
               Container(child: Text('my')),
             ],
