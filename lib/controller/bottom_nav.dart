@@ -17,14 +17,10 @@ enum PageName {
 
 class BottomNavController extends GetxController {
   RxInt pageIndex = 0.obs;
-  bool isHome = true;
   DateTime? currentBackPressTime;
 
   void _changePage(int value) {
     pageIndex(value);
-    if (value == PageName.HOME.index) {
-      isHome = false;
-    }
   }
 
   void changeBottomNav(int value, {bool hasGesture = true}) {
@@ -33,20 +29,18 @@ class BottomNavController extends GetxController {
     // TODO: refact later
     switch (page) {
       case PageName.HOME:
-        isHome = true;
         _changePage(value);
         break;
       case PageName.MAP:
       case PageName.APTLIST:
       case PageName.MY:
-        isHome = false;
         _changePage(value);
         break;
     }
   }
 
   Future<bool> willPopAction() async {
-    if (isHome) {
+    if (pageIndex == PageName.HOME.index) {
       return exitApp();
     } else {
       _changePage(PageName.HOME.index);
