@@ -18,7 +18,7 @@ class CameraController extends GetxController {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       GallerySaver.saveImage(_image.path, albumName: albumName);
-      _image.delete();
+      await _image.delete();
       // Save image to map marker
     } else {
       Fluttertoast.showToast(

@@ -13,7 +13,7 @@ class MapPage extends GetView<CameraController> {
       body: NaverMap(
         locationButtonEnable: true,
         initLocationTrackingMode: LocationTrackingMode.Follow),
-        floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           controller.getImage();
         },
