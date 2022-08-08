@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Find My House',
       home: Home(),
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.grey,
       ),
       initialBinding: InitBinding(),
     );

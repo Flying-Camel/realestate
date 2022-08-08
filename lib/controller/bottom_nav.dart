@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 
 // routes
 import '../routes/map.dart';
-import '../components/message.dart';
 
 enum PageName {
   HOME,
@@ -57,7 +56,7 @@ class BottomNavController extends GetxController {
           msg: "'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",
           gravity: ToastGravity.BOTTOM,
           backgroundColor: const Color(0xff6E6E6E),
-          fontSize: 20,
+          fontSize: 15,
           toastLength: Toast.LENGTH_SHORT);
       return false;
     }
