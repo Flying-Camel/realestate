@@ -19,7 +19,11 @@ class Home extends GetView<BottomNavController> {
       onWillPop: controller.willPopAction,
       child: Obx(
         () => Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: Text('내집찾아줭'),
+            shadowColor: Colors.white,
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,),
           body: IndexedStack(
             index: controller.pageIndex.value,
             children: [
