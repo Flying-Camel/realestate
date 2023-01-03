@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
 
 import 'package:realestate/controller/camera.dart';
+import 'package:realestate/routes/camera.dart';
 
 class MapPage extends GetView<CameraController> {
   const MapPage({Key? key}) : super(key: key);
@@ -15,7 +16,8 @@ class MapPage extends GetView<CameraController> {
         initLocationTrackingMode: LocationTrackingMode.Follow),
         floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          controller.getImage();
+          // controller.getImage();
+          Get.to(() => CameraPage());
         },
         label: Text('사진'),
         icon: Icon(Icons.camera_enhance),

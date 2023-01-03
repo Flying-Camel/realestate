@@ -44,6 +44,9 @@ dependencies:
   fluttertoast: ^8.0.9
   image_picker: ^0.8.5+3
   gallery_saver: ^2.3.2
+  camerawesome: ^0.3.3
+  image: ^3.2.0
+  video_player: ^2.4.6
 
 dev_dependencies:
   flutter_test:
